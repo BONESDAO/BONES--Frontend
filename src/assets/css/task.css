@@ -1,0 +1,97 @@
+.root {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  background-color: #000;
+  border-radius: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: left;
+  position: relative;
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.button {
+  background-color: #ADFF2F;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ADFF2F;
+  border-radius: 5px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin: 10px 0;
+  cursor: pointer;
+  margin-bottom: 3%;
+}
+
+.task.completed {
+  background-color: #333;
+}
+
+.label1{
+  color: white;
+}
+
+.label2{
+  color: black;
+}
+
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #070b00;
+}
+
+.checkbox.checked {
+  background-color: #070b00;
+}
+
+.checkbox svg {
+  fill:#ADFF2F;
+  display: none;
+}
+
+.checkbox.checked svg {
+  display: block;
+}
