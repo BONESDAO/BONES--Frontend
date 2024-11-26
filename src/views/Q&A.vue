@@ -11,23 +11,23 @@ const store = useGlobalStore();
 const qatasks = ref([]);
 
 // 检查答案是否正确
-const checkAnswer = (completed, qid, rewards) => {
+const checkAnswer = (completed, qid, rewards, isCorrect) => {
   if (completed === 0) {
     request
       .post("/qa/complete", {
         id,
         qid,
         skull: rewards,
+        isCorrect
       })
       .then(function (response) {
         if (response.status === 200) {
           const data = response.data;
           if (data.success) {
-            const qa = qatasks.value[qid];
+            const qa = qatasks.value[qid - 1];
             qa.isCorrect =
               qa.userAnswer.trim().toLowerCase() === qa.answer.toLowerCase(); // 转换为小写并比较答案
             qa.showResult = true; // 展示答案
-            getQuestion();
           }
         }
       });
@@ -85,7 +85,7 @@ onMounted(() => {
         </div>
       </div>
       <div>
-        <div v-for="qa in qatasks" :key="qa.qid" class="qa">
+        <div v-for="qa in qatasks" :key="qa.qid" :class="{'qa': true, 'completed': qa.completed}">
           <div>
             <div>{{ qa.question }}</div>
             <div class="input-container">
@@ -94,12 +94,12 @@ onMounted(() => {
                 :placeholder="'输入你的答案'"
                 class="answer-input"
               />
-              <button @click="checkAnswer(qa.completed, qa.qid, qa.rewards)" class="submit-button">
+              <button @click="checkAnswer(qa.completed, qa.qid, qa.rewards)" class="submit-button" :disabled="qa.showResult">
                 提交
               </button>
             </div>
             <div
-              v-if="qa.showResult"
+              v-if="qa.showResult || qa.completed"
               :class="['result', qa.isCorrect ? 'correct' : 'incorrect']"
             >
               {{
