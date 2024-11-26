@@ -245,6 +245,10 @@ const goTask = () => {
   router.push("/task");
 }
 
+const goQA = () => {
+  router.push("/qa")
+}
+
 const updateExp = () => {
 	if (isUpdating || addExp === 0) return; // 如果正在更新或没有增加经验，则跳过当前请求
 	isUpdating = true;
@@ -444,6 +448,9 @@ onUnmounted(()=>{
           <div class="box2">
             <div class="box2-1" @click="goTask">
               <img src="../assets/images/font.png" alt="" style="width: 90%;">
+            </div>
+			<div class="box2-3" @click="goQA">
+              <img src="../assets/images/task.png" alt="" style="width: 90%;">
             </div>
             <div class="box2-2"
                  @touchstart.prevent.stop="knock"
