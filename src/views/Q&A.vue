@@ -11,14 +11,13 @@ const store = useGlobalStore();
 const qatasks = ref([]);
 
 // 检查答案是否正确
-const checkAnswer = (completed, qid, rewards, isCorrect) => {
+const checkAnswer = (completed, qid, rewards) => {
   if (completed === 0) {
     request
       .post("/qa/complete", {
         id,
         qid,
-        skull: rewards,
-        isCorrect
+        skull: rewards
       })
       .then(function (response) {
         if (response.status === 200) {
@@ -91,11 +90,11 @@ onMounted(() => {
             <div class="input-container">
               <input
                 v-model="qa.userAnswer"
-                :placeholder="'输入你的答案'"
+                :placeholder="'Enter your answer'"
                 class="answer-input"
               />
               <button @click="checkAnswer(qa.completed, qa.qid, qa.rewards)" class="submit-button" :disabled="qa.showResult">
-                提交
+                Submit
               </button>
             </div>
             <div
@@ -104,8 +103,8 @@ onMounted(() => {
             >
               {{
                 qa.isCorrect
-                  ? `正确! 获得${qa.rewards}`
-                  : "错误. 正确答案是: " + qa.answer
+                  ? `Correct! Get${qa.rewards}💀`
+                  : "Incorrect ☠️ The correct answer is " + qa.answer
               }}
             </div>
           </div>
