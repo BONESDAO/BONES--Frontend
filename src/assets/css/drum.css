@@ -276,6 +276,20 @@
   align-items: center;
   /* background-color: aliceblue; */
 }
+.box2-3 {
+  width: 55px;
+  height: 55px;
+  background-color: #39c5bb;
+  position: absolute;
+  right: 5px;
+  top: 30%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  box-shadow: 5px 5px 10px 0 rgb(0, 0, 0, 0.9);
+}
 #drum{
   width: 95%;
   height: 95%;
